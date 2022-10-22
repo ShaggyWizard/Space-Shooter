@@ -26,6 +26,12 @@ public class Asteroid : MonoBehaviour, IPooledObject, IProjectile
             Kill();
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out IDamagable damagable))
+        {
+        }
+    }
 
 
     public void Spawn(Vector3 position, Quaternion rotation)
@@ -39,7 +45,6 @@ public class Asteroid : MonoBehaviour, IPooledObject, IProjectile
     {
         gameObject.SetActive(false);
     }
-
     public void SetSpeed(float newSpeed)
     {
         _speed = newSpeed;
